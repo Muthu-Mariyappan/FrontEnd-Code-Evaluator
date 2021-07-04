@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta CHARSET="UTF-8">
+	<meta Name="Author" content="Muthu G">
+	<meta Name="KEYWORDS" content="Code,validator,online">
+	<link rel="stylesheet" href="index.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Online Code Evaluator </title>
+</head>
+
+<style>
+	.noborder{
+		border:none;
+	}
+	h6.ritem
+	{
+		flex:auto;
+	}
+	label{
+		cursor:pointer;
+	}
+	#sec_reg .ipfield
+	{
+		padding:5px;
+	}
+</style>
+<body onload="modal()">
+	<div id="big_wrapper">
+		<header>
+			<h2 align="center"> Welcome to the TCE Code Evaluator </h2>
+		</header>
+		<div id="inner_wrapper">
+			<nav >
+				<div id="reglog_menu">
+					<button class="menuitem" id="ind_login" onclick="mitchange(1)"> Log In  </button>
+					<button class="menuitem" id="ind_reg" onclick="mitchange(2)"> Register  </button>
+				</div>
+			</nav>
+			
+			<section class="ind_sec" id="sec_log">
+				<form method="post" class="ind_form" onsubmit="return validate()">
+				
+					<div class="ipfield noborder" style = "margin-bottom:10px;" >
+						<input onclick = "radioChange(1)" type="Radio"  name="indrad" id="radio1" value="student"  checked> <h6 class="ritem" ><label for="radio1" onclick = "radioChange(1)"> Student </label> </h6>
+						<input onclick = "radioChange(2)" type="Radio" name="indrad" id="radio2" value="staff" style="margin-left:20px;" > <h6 class="ritem"> <label onclick = "radioChange(2)" for="radio2">Staff </label></h6>
+					</div>
+					<div class="ipfield">		
+						<input class="iptext"   id="login" autocomplete="on" name="login" value="" placeholder="Register Number" type="text" onblur = "checkLogReg(this)">
+					</div>
+					
+					<div class="errLine">		
+						<h6 class="restext" id="logRegnoErr"> <h6>
+					</div>
+					
+					<div class="ipfield">
+						<input class="iptext"   id="password" name="password" placeholder="Password" type="password">
+					</div>
+					
+					<div class="errLine">		
+						<h6 class="restext" id="logPassErr"> <h6>
+					</div>	
+					<span>
+						<input type="checkbox" id="remember" name="check" style="cursor:pointer" > <label for="remember" style="cursor:pointer"> <h6> Remember me </h6> </label>
+						<a id="myBtn" onclick = "showPasswordReset()"  style="cursor:pointer" >   Forgot your password? </a>
+					</span>
+					
+					<div style="margin-top:30px;" class="ipfield noborder">	<button type="submit" class="index_button" id="index-submit" onclick=""> Log In </button> </div>
+				</form>
+			</section>
+			
+			<section class="ind_sec" id="sec_reg">
+				<form method="get" action="#" class="ind_form" onsubmit="check_reg()">
+					
+					<div class="ipfield noborder" style = "margin:15px 0 0 0;justify-content:space-between;" >
+						<button type="button" class="secButton" id="secButA" onclick="selectBut('A')"> Section A </button>
+						<button type="button" class="secButton" id="secButB" onclick="selectBut('B')"> Section B </button>
+					</div>
+					<div class="errLine" style="margin-top:3px;">		
+						<h6 class="restext" id="secErr" > Please select your section for this semester <h6>
+					</div>
+					
+					<div class="ipfield">		
+						<input onblur = "checkRegReg(this)" class="iptext"    id="sec_reg_user"  name="regno" value="" placeholder="Register Number" type="text">
+					</div>
+					<div class="errLine">		
+						<h6 class="restext" id="regRegnoErr"> <h6>
+					</div>
+					
+					<div class="ipfield">		
+						<input class="iptext" onblur = "checkRegEmail(this)"    id="sec_reg_email"  name="email" value="" placeholder="Email address" type="email">
+					</div>
+					<div class="errLine">		
+						<h6 class="restext" id="regEmailErr"> <h6>
+					</div>
+					
+					<div class="ipfield">		
+						<input class="iptext" onblur = "checkRegPass(this)"   id="sec_reg_pass"  name="pass" value="" placeholder="Password (6 or more characters)" type="password">
+					</div>
+					<div class="errLine">		
+						<h6 class="restext" id="regPassErr"> <h6>
+					</div>
+					
+					<div class="ipfield">		
+						<input class="iptext" onblur = "checkRegRepass(this)" disabled   id="sec_reg_repass"  name="repass" value="" placeholder="Retype Password" type="password">
+					</div>
+					<div class="errLine">		
+						<h6 class="restext" id="regRepassErr"> <h6>
+					</div>
+					
+					<div class="ipfield noborder">	<button type="button" class="index_button" id="index-register" onclick=""> Register </button> </div>					
+				</form>
+				
+			</section>
+		</div>
+	</div>
+	
+	
+	
+	<!-- Html code for Modal window -->
+	
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close" onclick = "hidePasswordReset()">&times;</span>
+				<h3 color="black">Password Reset</h3>
+			</div>
+			<div class="modal-body">
+				<div class="ipfield" style="margin:6px;">		
+					<input class="iptext" style="width:auto;min-width:30;flex:auto"  id="reset_email"  name="email" value="" placeholder="Registered Email address" type="email">
+					<button id="okButton" onclick="passreset()">Send Reset Link</button>
+				</div>
+				<h6 class="restext" id="passretext"> </h6>
+			</div>
+	
+	  </div>
+
+	</div>
+	
+	<div id="passModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 color="black">Admin Login - Entry check</h3>
+			</div>
+			<div class="modal-body">
+				<div class="ipfield" style="margin:6px;">		
+					<input autofocus class="iptext" style="width:auto;min-width:30;flex:auto"  id="adminSecPass"  name="adminSecPass" value="" placeholder="Secure Entry Password" type="password"/>
+					<button id="okButton" onclick="doEntryCheck()">Enter</button>
+				</div>
+				<h6 class="restext" id="adminEntText"> </h6>
+			</div>	
+	  </div>
+	</div>
+	<footer class="footBar" id="footIndex">
+		<h2> Code Evaluator welcomes you to the new semester! Please register to choose your section! </h2>
+		<span  id="footClose" onclick = "closeFoot(this)">&times;</span>
+	</footer>
+	<script src="index.js">  </script>
+</body>
+
+</html>

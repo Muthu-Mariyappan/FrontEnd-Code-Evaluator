@@ -1,0 +1,586 @@
+*{
+	margin:0px;
+	padding:0px;
+	outline:none;
+}
+*:hover
+{
+	outline:none;
+}
+*:active
+{
+	outline:none;
+}
+
+body,header,section,footer,aside,nav,article,hgroup
+{
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+	flex-wrap:wrap;
+	align-items: center;
+    justify-content: center;
+}
+
+h2
+{
+	font:bold 26px tahoma;
+	color:deepskyblue;
+	padding:20px;
+	text-transform:capitalize;
+	-moz-box-flex: 1;       /* Mozilla */
+    -webkit-box-flex: 1;    /* WebKit */
+}
+
+br
+{
+	clear:both;
+}
+
+header
+{
+	-webkit-box-pack:center;
+	-moz-box-pack:center;
+	align-items:center;
+}
+
+body{
+	width:98%;
+	border:solid 2px white;
+	margin:auto;
+	-webkit-box-pack:center;
+	-moz-box-pack:center;
+
+}
+
+button
+{
+	background-color:white;
+	border:none;
+}
+
+#big_wrapper
+{
+	-moz-box-flex: 1;       /* Mozilla */
+    -webkit-box-flex: 1;
+	width:auto;
+	margin:auto;
+	max-width:1000px;
+	max-height:800px;
+	min-height:600px;	
+	border:solid 2px white;
+	align-items:center;
+}
+
+#inner_wrapper
+{
+	-moz-box-flex: 1;       /* Mozilla */
+    -webkit-box-flex: 1;
+	width:auto;
+	margin:auto;
+	max-width:1000px;
+	max-height:800px;
+	min-height:434px;	
+	border:solid 2px deepskyblue;
+	align-items:center;
+}
+
+
+
+#reglog_menu
+{
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+	flex-wrap:wrap;
+	flex-direction:ltr;
+	-moz-box-orient:horizontal;
+	-webkit-box-orient:horizontal;
+	align-items:stretch;
+	width:100%;
+	height:50px;
+}
+
+.menuitem
+{
+	-moz-box-flex: auto;       /* Mozilla */
+    -webkit-box-flex: auto; 
+	flex:auto;/* WebKit */
+	
+	
+	font:bold 20px helvetica;
+	letter-spacing:1px;
+	background-color:deepskyblue;
+	cursor:pointer;
+	padding:10px 10px 20px 10px;  /*top right down left*/
+	color:white;
+	-webkit-transition: color 2s,background-color 2s; /* Safari */
+    transition: color 1s,background-color 1s;
+}
+
+.ind_sec
+{
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+	flex-wrap:wrap;
+	flex-direction:ltr;
+	
+
+	flex:auto;
+	align-items:flex-start;
+	max-height:	515px;
+	margin:0px;
+	-webkit-transition: color 2s,display 2s; /* Safari */
+    transition: color 2s,display 2s;
+	 -webkit-animation-name: fadeout;
+    -webkit-animation-duration: 1s;
+    animation-name: fadeout;
+    animation-duration: 1s
+}
+
+#ind_login
+{
+	background-color:white;
+	color:black;
+	border-bottom:solid 2px white;
+}
+
+#ind_reg
+{
+	background-color:deepskyblue;
+	color:white;
+	border-bottom:solid 2px deepskyblue;
+}
+
+#sec_log
+{
+	display:flex;
+}
+
+
+#sec_reg
+{
+	display:none;
+}
+
+.ind_form
+{
+	padding:10px;
+	flex-flow:column wrap;
+	
+}
+
+
+.ipfield
+{
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+	flex-flow:row wrap;
+	padding:10px;
+	border:solid 2px cyan;
+	border-radius:5px;
+	margin:0px auto 0px auto;
+	-moz-box-flex: auto;       /* Mozilla */
+    -webkit-box-flex: auto; 
+	box-shadow:white 1px 1px 4px;
+	-moz-transition:box-shadow 2s;
+	transition:box-shadow 2s;
+	-webkit-animation-name: growtall;
+    -webkit-animation-duration: 1s;
+    animation-name: growtall;
+    animation-duration: 1s
+}
+
+.ipfield:focus
+{
+	box-shadow:cyan 1px 1px 4px;
+}
+
+.errLine
+{
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+	flex-flow:row wrap;
+	border:none;
+	margin:10px auto 10px auto;
+	-moz-box-flex: auto;       /* Mozilla */
+    -webkit-box-flex: auto; 
+	flex:auto;
+	box-shadow:white 1px 1px 4px;
+	-moz-transition:box-shadow 2s;
+	transition:box-shadow 2s;
+	-webkit-animation-name: growtall;
+    -webkit-animation-duration: 1s;
+    animation-name: growtall;
+    animation-duration: 1s;
+}	
+
+
+#secErr
+{
+	color:green;
+	font:italic 16px calibri;
+	font-weight:dark;
+	text-align:center;
+	transition:2s;
+}
+
+.footBar
+{
+	display:flex;
+	position:fixed;
+	bottom:0;
+	margin:10px;
+	
+	background-color:rgba(255,255,0,0.3);
+	flex-flow:row wrap;
+	border-top-left-radius:10px;
+	border-bottom-left-radius:10px;
+	-webkit-animation-name:fadeout ;
+    -webkit-animation-duration: 2s;
+    animation-name: fadeout;
+    animation-duration: 2s
+}
+
+.footBar h2
+{
+	font:bold 16px arial;
+	color:darkslategray;
+	padding:10px 20px;
+	flex:8;
+}
+
+
+
+#footClose
+{
+	color:black;
+	font:normal 30px helvetica;
+	border-left:solid 2px orange;
+	padding:0px 5px;
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+	cursor:pointer;
+	flex:1;
+	max-width:20px;
+}
+
+#footClose:hover
+{
+	
+}
+
+/* hold for now*/
+
+#okButton
+{
+	padding:5px 20px;
+	margin:2px 5px;
+	color:white;
+	border-radius:5px;
+	font:bold 16px helvetica;
+	background-color:deepskyblue;
+	cursor:pointer;
+	opacity:0.6;
+	transition: opacity 1s;
+	
+}
+#okButton:hover
+{
+	opacity:1;
+}
+
+.secButton
+{
+	font:bold 18px arial;
+	color:white;
+	border:solid 2px #4CAF50;
+	padding:2px 25px;
+	background-color:#4CAF50;
+	margin:0px 0px;
+	cursor:pointer;
+	border-radius:5px;
+	transition:1s;
+}
+
+
+
+#forgotBox
+{
+	-webkit-animation-name: lefttoright;
+    -webkit-animation-duration: 4s;
+    animation-name: lefttoright;
+    animation-duration: 4s
+}
+
+#forgetRip
+{
+	-webkit-animation-name: lefttoright;
+    -webkit-animation-duration: 2s;
+    animation-name: lefttoright;
+    animation-duration: 2s;
+}
+
+
+
+.iptext
+{
+	-moz-box-flex: auto;       /* Mozilla */
+    -webkit-box-flex: auto; 
+	flex:auto;/* WebKit */
+	border:none;
+	width:350px;
+	font:normal 20px helvetica;
+	min-width:200px;
+	max-height:30px;
+	min-height:30px;
+}
+
+h6
+{
+	font:bold 16px helvetica;
+	display:inline-flex;
+	flex:auto;
+	color:darkgray;
+	-moz-transition:color 2s;
+	transition:color 2s;
+	min-height:16px;
+}
+
+
+span a
+{
+	float:right;
+	font:bold 16px helvetica;
+	display:inline-flex;
+	color:darkgray;
+	text-decoration:none;
+	-moz-transition:color 2s;
+	transition:color 2s;
+}
+
+span a:hover
+{
+	color:black;
+}
+
+.index_button
+{
+	padding:10px 40px;
+	-moz-box-flex: auto;       /* Mozilla */
+    -webkit-box-flex: auto; 
+	flex:auto;
+	border:solid 2px limegreen;
+	border-radius:5px;
+	cursor:pointer;
+	background-color:lightgreen;
+	color:darkgreen;
+	font:bold 18px helvetica;
+	letter-spacing:1.5px;
+	box-shadow:white 2px 2px 2px; 
+	-moz-transition:box-shadow 2s,transform 2s;
+	transition:box-shadow 1s,transform 2s;
+}
+.index_button:hover
+{
+	box-shadow:#66CDAA 7px 7px 13px;
+	transform:scale(1.001);
+}
+
+
+/*Css properties for Modal window*/
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 250px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: transparent;
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: fadeout;
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeout;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:0.1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:0.1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {
+	padding: 0px 16px;
+	margin :0px 0px;
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: ivory;
+    color: white;
+	display:flex;
+}
+
+h3
+{
+	font:bold 16px tahoma;
+	color:white;
+	padding:10px;
+	text-transform:capitalize;
+	-moz-box-flex: 1;       /* Mozilla */
+    -webkit-box-flex: 1;    /* WebKit */
+}
+
+.modal-footer button{
+	padding:10px 20px;
+	margin:8px 5px;
+	font : bold 16px helvetica;
+	color:black;
+	background-color: cyan;
+	border-radius:15px;
+	flex:auto;
+	box-shadow:white 2px 2px 2px;
+	transition:box-shadow 2s;
+}
+
+.modal-footer button:hover{
+	box-shadow:gray 5px 5px 11px;
+}
+
+.modal input
+{
+	max-width:80%;
+	min-width:30%
+}
+
+.restext
+{
+	display:flex;
+	margin:0px 0px 0px 8px;
+	padding:0px;
+	font:normal 14px calibri;
+	color:white;
+	height:16px;
+	letter-spacing:1.2px;
+}
+
+#passretext,#adminEntText
+{
+	height:22px;
+}
+
+
+
+
+/*Animations*/
+
+@-webkit-keyframes fadeout {
+    from {opacity:0.2} 
+    to {opacity:1}
+}
+
+@keyframes fadeout {
+    from {opacity:0.2} 
+    to {opacity:1}
+}
+
+@-webkit-keyframes growtall {
+    from {opacity:0;transform:scale(0.85)} 
+    to {opacity:1;transform:scale(1)}
+}
+
+@keyframes growtall {
+    from {opacity:0;transform:skew(0.85)} 
+    to {opacity:1;transform:skew(1)}
+}
+
+@-webkit-keyframes lefttoright {
+    from {left:-300px; opacity:0} 
+    to {left:110; opacity:1}
+}
+
+@keyframes lefttoright {
+    from {left:-300px; opacity:0}
+    to {left:110; opacity:1}
+}
+
+
+
+
+
+
+
+
+
+
+
+/*For resized windows*/
+
+@media all and (max-width: 800px) {
+  .navigation {
+    justify-content: center;
+  }
+}
+
+@media all and (max-width: 600px) {
+  #reglog_menu {
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    padding: 0;
+  }
+}

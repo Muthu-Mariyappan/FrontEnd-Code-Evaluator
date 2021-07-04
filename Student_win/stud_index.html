@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta CHARSET="UTF-8">
+	<meta Name="Author" content="Muthu G">
+	<meta Name="KEYWORDS" content="Code,validator,online">
+	<link rel="stylesheet" href="stud_index.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Online Code Evaluator </title>
+</head>
+
+<style>
+	.noborder{
+		border:none;
+		margin:2.5px;
+	}
+	h6.ritem
+	{
+		flex:auto;
+	}
+	label{
+		cursor:pointer;
+	}
+	#sec_reg .ipfield
+	{
+		padding:5px;
+	}
+	.rightalign{
+		align-items: center;
+		justify-content: flex-end;
+	}
+	.leftalign{
+		align-items: center;
+		justify-content: flex-start;
+	}
+	.centeralign{
+		align-items: center;
+		justify-content: center;
+	}
+	.space
+	{
+		margin:5px;
+		width:98%;
+	}
+	.profile{
+		margin-right:15px;
+		background-color:rgba(135,206,250,0.2);;
+		border-color:deepskyblue;
+		color:rgba(0,0,205,0.6);
+	}
+</style>
+<body onload="modal()">
+	<div id="big_wrapper">
+		<header>
+			<h2 align="center"> Online Code Validator - Student Corner </h2>
+		</header>
+		<div id="inner_wrapper">
+			<nav >
+				<div id="home_menu">
+					<button class="menuitem" id="ind_login" onclick="mitchange(1)"> Home  </button>
+					<button class="menuitem" id="ind_reg" onclick="mitchange(2)"> Labs  </button>
+					<button class="menuitem" id="ind_enroll" onclick="mitchange(3)"> Enrol  </button>
+				</div>
+			</nav>
+			<div class="ipfield noborder rightalign" style="">
+				<button class="smallbutton profile" onclick="showProfile()"> Profile </button>
+				<button class="smallbutton" onclick="logoff()"> Logoff </button>
+			</div>	
+			<section class="ind_sec flex_left" id="sec_home">
+				<div class="flex_box flex_left"> 
+					<h4> Available Experiments </h4> 
+				</div>
+				
+				<article class="recordBox flex_box" id="availexp">
+				
+					<div class="recordHead">
+						<span class="recorditem"> Ex No </span>
+						<span class="recorditem"> Subject </span>
+						<span class="recorditem"> Experiment Title </span>
+						<span class="recorditem"> Date posted </span>
+						<span class="recorditem"> Status</span>
+					</div>
+				
+					<div class="record" onclick="show_exp(this)">
+						<span class="recorditem"> Ex 1 </span>
+						<span class="recorditem"> Operating systems </span>
+						<span class="recorditem"> Symbol table </span>
+						<span class="recorditem"> 12/07 </span>
+						<span class="recorditem"> Not viewed </span>
+					</div>
+					
+					<div class="record" onclick="show_exp(this)">
+						<span class="recorditem"> Ex 2 </span>
+						<span class="recorditem"> Operating systems </span>
+						<span class="recorditem"> Round Robin </span>
+						<span class="recorditem"> 12/07 </span>
+						<span class="recorditem"> Not viewed </span>
+					</div>
+					
+					<div class="record" onclick="show_exp(this)">
+						<span class="recorditem"> Ex 1 </span>
+						<span class="recorditem"> Networking </span>
+						<span class="recorditem"> Finding IP </span>
+						<span class="recorditem"> 4/07 </span>
+						<span class="recorditem"> Not viewed </span>
+					</div>
+					
+					<div class="record" onclick="show_exp(this)">
+						<span class="recorditem"> Ex 1 </span>
+						<span class="recorditem"> Software Engineering </span>
+						<span class="recorditem"> ER diagrams </span>
+						<span class="recorditem"> 12/07 </span>
+						<span class="recorditem"> Not viewed </span>
+					</div>
+					<button id="lmore" class="recordButton" onclick="loadMore()"> Load More </button>
+					
+				</article>
+				
+				<div class="flex_box flex_left"> 
+					<h4> Last Submissions </h4> 
+				</div>
+				
+				<article class="recordBox flex_box">
+				
+					<div class="recordHead">
+						<span class="recorditem"> Ex No </span>
+						<span class="recorditem"> Subject </span>
+						<span class="recorditem"> Experiment Title </span>
+						<span class="recorditem"> Date of submission </span>
+						<span class="recorditem"> Score</span>
+					</div>
+				
+					<div class="record" onclick="show_exp(this)">
+						<span class="recorditem"> Ex 1 </span>
+						<span class="recorditem"> Operating systems </span>
+						<span class="recorditem"> Symbol table </span>
+						<span class="recorditem"> 12/07 </span>
+						<span class="recorditem goodmark"> 10.0 </span>
+					</div>
+					
+					
+					<div class="record" onclick="show_exp(this)">
+						<span class="recorditem"> Ex 1 </span>
+						<span class="recorditem"> Networking </span>
+						<span class="recorditem"> Finding IP </span>
+						<span class="recorditem"> 4/07 </span>
+						<span class="recorditem goodmark" > 10.0 </span>
+					</div>
+					
+					<div class="record" onclick="show_exp(this)">
+						<span class="recorditem"> Ex 2 </span>
+						<span class="recorditem"> Networking </span>
+						<span class="recorditem"> Finding MAC </span>
+						<span class="recorditem"> 12/07 </span>
+						<span class="recorditem badmark"> 4.0 </span>
+					</div>
+					
+					<div class="record" onclick="show_exp(this)">
+						<span class="recorditem"> Ex 1 </span>
+						<span class="recorditem"> Software Engineering </span>
+						<span class="recorditem"> ER diagrams </span>
+						<span class="recorditem"> 12/07 </span>
+						<span class="recorditem badmark"> 3.8 </span>
+					</div>
+					
+					<button class="recordButton"> Load More </button>
+					
+				</article>
+			</section>
+			
+			<section class="ind_sec flex_left" id="sec_lab">
+				<div class="lab_box flex_box">
+					<article class="classBox ">
+						<header class="classHead">
+							<h5 class="classTitle">14CS390 - Data Structures </h5>
+						</header>
+						<section class="classBody">
+							<div class="classRow ">  
+								<span class="classItem"> Handled By : </span>
+								<span class="classItem"> Dr. S. Karthick and Dr. S. Sudha  </span>
+							</div>
+							<div class="classRow ">  
+								<span class="classItem"> Slot </span>
+								<span class="classItem"> A  </span>
+							</div>
+							<div class="classRow ">  
+								<span class="classItem"> No of exercises Posted: </span>
+								<span class="classItem"> 20  </span>
+							</div>
+							<div class="classRow ">  
+								<span class="classItem"> No of exercises finished : </span>
+								<span class="classItem"> 12 </span>
+							</div>
+							<div class="classRow ">  
+								<span class="classItem"> No of exercises Pending : </span>
+								<span class="classItem"> 8  </span>
+							</div>	
+							<div class="flex_box">
+								<button class="classButton" onclick="showClass(this)"> View </Button>
+							</div>
+						</section>
+					</article>
+					
+					<article class="classBox ">
+						<header class="classHead">
+							<h5 class="classTitle"> Algorithms </h5>
+						</header>
+						<section class="classBody">
+							<div class="classRow ">  
+								<span class="classItem"> Handled By : </span>
+								<span class="classItem"> Dr. S. Karthick  </span>
+							</div>
+							<div class="classRow ">  
+								<span class="classItem"> Slot </span>
+								<span class="classItem"> A  </span>
+							</div>
+							<div class="classRow ">  
+								<span class="classItem"> No of exercises Posted: </span>
+								<span class="classItem"> 20  </span>
+							</div>
+							<div class="classRow ">  
+								<span class="classItem"> No of exercises finished : </span>
+								<span class="classItem"> 12 </span>
+							</div>
+							<div class="classRow ">  
+								<span class="classItem"> No of exercises Pending : </span>
+								<span class="classItem"> 8  </span>
+							</div>	
+							<div class="flex_box" >
+								<button class="classButton" onclick="showClass(this)"> View </Button>
+							</div>
+						</section>
+					</article>
+					
+					
+					<article class="classBox ">
+						<header class="classHead">
+							<h5 class="classTitle"> Software Engineering </h5>
+						</header>
+						<section class="classBody">
+							<div class="classRow ">  
+								<span class="classItem"> Handled By : </span>
+								<span class="classItem"> Dr.Vigna Raj  </span>
+							</div>
+							<div class="classRow ">  
+								<span class="classItem"> Slot </span>
+								<span class="classItem"> A  </span>
+							</div>
+							<div class="classRow ">  
+								<span class="classItem"> No of exercises Posted: </span>
+								<span class="classItem"> 20  </span>
+							</div>
+							<div class="classRow ">  
+								<span class="classItem"> No of exercises finished : </span>
+								<span class="classItem"> 12 </span>
+							</div>
+							<div class="classRow ">  
+								<span class="classItem"> No of exercises Pending : </span>
+								<span class="classItem"> 8  </span>
+							</div>	
+							<div class="flex_box" >
+								<button class="classButton" onclick="showClass(this)"> View </Button>
+							</div>
+						</section>
+					</article>
+					
+				</div>
+			</section>
+			
+			<section class="ind_seci flex_left" id="sec_class">
+			
+				<div class="flex_box leftalign">
+					<button class="backbutton" onclick="showClasses()"> Back </button>
+				</div>
+				 
+				<div class="clsRoomBox">
+					<header class="clsRoomHead">
+						<div class="clsRoomHeadRow">
+							<h5 > 14CS490 - Data Structures Lab </h5>
+						</div>
+						<div class="clsRoomHeadRow">
+							<span class="crhItem" > Handled By : Dr. S. Karthick  </span>
+							<span class="crhItem" > No of Experiments : 12  </span>
+						</div>
+					</header>
+					
+					<div class="flex_box flex_left"> 
+						<h4> Available Experiments </h4> 
+					</div>
+					
+					<article class="recordBox flex_box LabBox" id="labbox-1">
+				
+						<div class="recordHead">
+							<span class="recorditem"> Ex No </span>							
+							<span class="recorditem"> Experiment Title </span>
+							<span class="recorditem"> Date posted </span>
+							<span class="recorditem"> Score </span>
+							<span class="recorditem"> Action </span>
+						</div>
+					
+						<div class="record" >
+							<span class="recorditem"> Ex 1 </span>
+							<span class="recorditem"> Symbol table </span>
+							<span class="recorditem"> 12/07 </span>
+							<span class="recorditem"> Not viewed </span>
+							<span class="recorditem"> <input onclick="showSubSummary()" class="tryButton" type="button" value="View"/> <input onclick="show_exp(this)" class="tryButton" type="button" value="Try"/></span>
+							
+						</div>
+						
+						<div class="record" onclick="show_exp(this)">
+							<span class="recorditem"> Ex 2 </span>
+							<span class="recorditem"> Round Robin </span>
+							<span class="recorditem"> 12/07 </span>
+							<span class="recorditem"> Not viewed </span>
+						</div>
+						
+						<div class="record" onclick="show_exp(this)">
+							<span class="recorditem"> Ex 1 </span>
+							<span class="recorditem"> Finding IP </span>
+							<span class="recorditem"> 4/07 </span>
+							<span class="recorditem"> Not viewed </span>
+						</div>
+						
+						<div class="record" onclick="show_exp(this)">
+							<span class="recorditem"> Ex 2 </span>
+							<span class="recorditem"> Finding MAC </span>
+							<span class="recorditem"> 12/07 </span>
+							<span class="recorditem"> Not viewed </span>
+						</div>
+						
+						<div class="record" onclick="show_exp(this)">
+							<span class="recorditem"> Ex 1 </span>
+							<span class="recorditem"> ER diagrams </span>
+							<span class="recorditem"> 12/07 </span>
+							<span class="recorditem"> Not viewed </span>
+						</div>
+						<div class="clsRoomHead">
+							<button class="recordButton" style="background-color:lightgray;color:black;"> &#x2039; Previous</button>
+							<button class="recordButton" onclick="showNext(1)">  Next &#8250;</button>
+						</div>
+					</article>
+					
+					<article class="recordBox flex_box LabBox" id="labbox-2">
+				
+						<div class="recordHead">
+							<span class="recorditem"> Ex No </span>
+							<span class="recorditem"> Subject </span>
+							<span class="recorditem"> Experiment Title </span>
+							<span class="recorditem"> Date posted </span>
+							<span class="recorditem"> Status</span>
+						</div>
+					
+						<div class="record" onclick="show_exp(this)">
+							<span class="recorditem"> Ex 1 </span>
+							<span class="recorditem"> Operating systems </span>
+							<span class="recorditem"> Symbol table </span>
+							<span class="recorditem"> 12/07 </span>
+							<span class="recorditem"> Not viewed </span>
+						</div>
+						
+						<div class="record" onclick="show_exp(this)">
+							<span class="recorditem"> Ex 2 </span>
+							<span class="recorditem"> Operating systems </span>
+							<span class="recorditem"> Round Robin </span>
+							<span class="recorditem"> 12/07 </span>
+							<span class="recorditem"> Not viewed </span>
+						</div>
+						
+						<div class="record" onclick="show_exp(this)">
+							<span class="recorditem"> Ex 1 </span>
+							<span class="recorditem"> Networking </span>
+							<span class="recorditem"> Finding IP </span>
+							<span class="recorditem"> 4/07 </span>
+							<span class="recorditem"> Not viewed </span>
+						</div>
+						
+						<div class="record" onclick="show_exp(this)">
+							<span class="recorditem"> Ex 2 </span>
+							<span class="recorditem"> Networking </span>
+							<span class="recorditem"> Finding MAC </span>
+							<span class="recorditem"> 12/07 </span>
+							<span class="recorditem"> Not viewed </span>
+						</div>
+						
+						<div class="record" onclick="show_exp(this)">
+							<span class="recorditem"> Ex 1 </span>
+							<span class="recorditem"> Software Engineering </span>
+							<span class="recorditem"> ER diagrams </span>
+							<span class="recorditem"> 12/07 </span>
+							<span class="recorditem"> Not viewed </span>
+						</div>
+						<div class="clsRoomHead">
+							<button onclick="showPrev(1)" class="recordButton" > &#x2039; Previous</button>
+							<button class="recordButton" style="background-color:lightgray;color:black;">  Next &#8250;</button>
+						</div>
+					</article>
+				</div>
+			</section>
+		
+			<section class="ind_sec flex_left" id="sec_enrol">
+				<div class="flex_box flex_left" style="justify-content:space-between;"> 
+					<h4> Available Labs </h4> 
+					<h5 class="warntext"> Enrolment ends in 5 days! </h5>
+				</div>
+			
+				<div id="enrolRoom">
+				
+					<div class="admdeptbox" >
+						<header class="admdeptboxHead" onclick="showAdminContent()">
+							<h5 class="admdeptboxTitle"> 14CS380 - Data Structures and Algorithms </h5>
+						</header>
+						<section class="admdeptboxBody">
+							<div class="adminnerbox">
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Handled by </span>
+									<span class="admdeptboxItem"> Dr S. Karthick and Dr. S. Sudha  </span>
+								</div>
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Select your enrolled batch : </span>
+									<span class="admdeptboxItem"> 
+										<select name="batch" id="selectBatch">
+											<option id="A" value="A"> A </option>
+											<option id="C" value="C"> C </option>
+										</select>
+									</span>
+								</div>
+								<div class="flex_box" style="justify-content:flex-end;">
+									<button class="enrollButton" onclick="enrol(this)"> Enrol </Button>
+								</div>
+							</div>
+						</section>
+					</div>
+					
+					<div class="admdeptbox" >
+						<header class="admdeptboxHead" onclick="showAdminContent()">
+							<h5 class="admdeptboxTitle"> 14CS770 - Artificial Intelligence </h5>
+						</header>
+						<section class="admdeptboxBody">
+							<div class="adminnerbox">
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Handled by </span>
+									<span class="admdeptboxItem"> Dr S. Karthick and Dr. S. Sudha  </span>
+								</div>
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Select your enrolled batch : </span>
+									<span class="admdeptboxItem"> 
+										<select name="batch" id="selectBatch">
+											<option id="A" value="A"> A </option>
+											<option id="C" value="C"> C </option>
+										</select>
+									</span>
+								</div>
+								<div class="flex_box" style="justify-content:flex-end;">
+									<button class="enrollButton" onclick="enrol(this)"> Enrol </Button>
+								</div>
+							</div>
+						</section>
+					</div>
+					
+					<div class="admdeptbox" >
+						<header class="admdeptboxHead" onclick="showAdminContent()">
+							<h5 class="admdeptboxTitle"> 14CS480 -  Algorithms </h5>
+						</header>
+						<section class="admdeptboxBody">
+							<div class="adminnerbox">
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Handled by </span>
+									<span class="admdeptboxItem"> Dr S. Karthick and Dr. Vignaraj  </span>
+								</div>
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Select your enrolled batch : </span>
+									<span class="admdeptboxItem"> 
+										<select name="batch" id="selectBatch">
+											<option id="A" value="A"> A </option>
+											<option id="C" value="C"> C </option>
+										</select>
+									</span>
+								</div>
+								<div class="flex_box" style="justify-content:flex-end;" >
+									<button class="enrollButton" onclick="enrol(this)"> Enrol </Button>
+								</div>
+							</div>
+						</section>
+					</div>
+					
+				</div>
+
+					
+			</section>		
+		
+					
+					
+				
+				
+				
+			
+			
+			<section class="ind_exp flex_left" id="sec_exp">
+				<div class="flex_box leftalign">
+					<button class="backbutton" onclick="mitchange(1)"> Back </button>
+				</div>
+				
+				<div class="expRoomBox">
+					<header class="expRoomHead">
+						<div class="expRoomHeadRow">
+							<h5 > 14CS490 - Data Structures Lab </h5>
+						</div>
+						<div class="expRoomHeadRow">
+							<span class="expcrhItem" > Handled By : Dr. S. Karthick  </span>
+							<span class="expcrhItem" > No of Experiments : 12  </span>
+						</div>
+					</header>
+					<article class="Expbody" >
+						<div class="expRoomHeadRow">
+							<h5 > Matching Brackets </h5>
+						</div>
+						<div class="expRoomHeadRow title">
+							<span class="expcrhItem" > Experiment No : 1  </span>
+							<span class="expcrhItem" > Deadline : 12-12-17  </span>
+						</div>
+						
+						<div class="expdescbox" id="prob_desc" title="click to expand">
+							<header class="expdeschead">
+								<h5> Problem Description </h5>
+							</header>
+							<div class="expdesccont">
+								<p>  
+									A bracket is considered to be any one of the following characters: (, ), {, }, [, or ]. 
+								</p>
+								<p>
+									Two brackets are considered to be a matched pair if the an opening bracket (i.e., (, [, or {) occurs to the left of a closing bracket (i.e., ), ], or }) of the exact same type. There are three types of matched pairs of brackets: [], {}, and ().
+								</p>
+								<p>
+									A matching pair of brackets is not balanced if the set of brackets it encloses are not matched. For example, {[(])} is not balanced because the contents in between { and } are not balanced. The pair of square brackets encloses a single, unbalanced opening bracket, (, and the pair of parentheses encloses a single, unbalanced closing square bracket, ].
+								</p>
+								<p>
+									By this logic, we say a sequence of brackets is considered to be balanced if the following conditions are met:
+								</p>
+								<ul>
+									<li> It contains no unmatched brackets. </li>
+									<li> The subset of brackets enclosed within the confines of a matched pair of brackets is also a matched pair of brackets </li>
+								</ul>
+								<p>
+									Given strings of brackets, determine whether each sequence of brackets is balanced. If a string is balanced, print YES on a new line; otherwise, print NO on a new line.
+								</p>
+								
+							</div>
+						</div>
+						<div class="expdescbox" id="input_desc">
+							<header class="expdeschead">
+								<h5> Input Format </h5>
+							</header>
+							<div class="expdesccont">
+								<p> 
+									The first line contains a single integer,<i>n</i>, denoting the number of strings.  
+								</p>
+								<p>
+									Each line <i> i </i> of the <i>n</i> subsequent lines consists of a single string,<i> s </i> , denoting a sequence of brackets.
+								</p>
+							
+							</div>
+						</div>						
+						<div class="expdescbox" id="const_desc">
+							<header class="expdeschead">
+								<h5> Constraints </h5>
+							</header>							
+							<div class="expdesccont">
+								<ul>
+									<li> 1<=n<=10^3 </li>
+									<li> 1<=len<=10^3, where len is length of string </li>
+									<li> Each character in the sequence will be a bracket (i.e., {, }, (, ), [, and ]) </li>
+								</ul>
+							</div>
+						</div>						
+						<div class="expdescbox" id="output_desc">
+							<header class="expdeschead">
+								<h5> Output Format </h5>
+							</header>
+							<div class="expdesccont">
+								<p> 
+									For each string, print whether or not the string of brackets is balanced on a new line. If the brackets are balanced, print YES; otherwise, print NO.
+								</p>
+							</div>
+						</div>
+						<div class="expdescbox" id="sample_input">
+							<header class="expdeschead">
+								<h5> Sample Input </h5>
+							</header>
+							<div class="expdesccont">
+								<code class="sampcodebox">
+									3 <br/>
+									{[()]}<br/>
+									{[(])}<br/>
+									{{[[(())]]}}<br/>
+								</code>
+							</div>
+						</div>
+						<div class="expdescbox" id="sample_output">
+							<header class="expdeschead">
+								<h5> Sample output </h5>
+							</header>
+							<div class="expdesccont">
+								<code class="sampcodebox">
+									YES<br/>
+									NO<br/>
+									YES<br/>
+								</code>
+							</div>
+						</div>
+						<div class="expdescbox" id="explan">
+							<header class="expdeschead">
+								<h5> Explanation </h5>
+							</header>
+							<div class="expdesccont">
+								<ol>
+									<li> The string {[()]} meets both criteria for being a balanced string, so we print YES on a new line.  </li>
+									<li> The string {[(])} is not balanced, because the brackets enclosed by the matched pairs [(] and (]) are not balanced.  </li>
+									<li> The string {{[[(())]]}} meets both criteria for being a balanced string, so we print YES on a new line.  </li>
+								</ol>
+							</div>
+						</div>
+						<div class="expdescbox" id="bonus">
+							<header class="expdeschead">
+								<h5> Bonus Objectives </h5>
+							</header>
+							<div class="expdesccont">
+								<p>
+									None.
+								</p>
+							</div>
+						</div>						
+						<div class="expdescbox" id="workarea">
+							<header class="expdeschead">
+								<h5> Work area </h5>
+							</header>
+							<div class="expdesccont">
+								<textarea rows="4" cols="50">
+Paste your code here
+								</textarea>
+								<div class="upload-btn-wrapper">									
+									<button class="btn">Upload a file</button>
+									<input type="file" name="myfile" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="expdescbox" id="score">
+							<header class="expdeschead">
+								<h5> Score Earned </h5>
+							</header>
+							<div class="expdesccont">
+								<ul>
+									<li> Score achieved : 10.0 </li>
+									<li> Remarks : Excellent! </li>
+								</ul>
+							</div>
+						</div>
+						<div class="expdescbox noborder" id="submitwork">
+							<div class="expdesccont noborder centeralign">
+								<button class="submitButton" onclick="submitcode()"> Submit </button>
+							</div>
+						</div>
+					</article>				
+				</div>
+			</section>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- Html code for Modal window -->
+	
+	<div id="ProModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">&times;</span>
+				<h3 color="black">Student Profile</h3>
+			</div>
+			<div class="modal-body">
+				<div class="profleft">
+					<div class="leftopt">
+						<h5 class="profleftbutton" id="leftbin" onclick="showBaseinfo()"> Basic information </h5>
+					</div>
+					<div class="leftopt" >
+						<h5 class="profleftbutton" id="leftpasscng" onclick="showChangePass()"> Change password </h5>
+					</div>
+				</div>
+				<div class="profright">
+					<div class="profrightcontent" id="basic-info">
+						<div class="binrow">
+							<span class="binfhead"> Name  </span>
+							<span class="binvalue"> Muthu Mariyappan</span>
+						</div>
+						<div class="binrow">
+							<span class="binfhead"> Dept  </span>
+							<span class="binvalue"> Computer science and Engg</span>
+						</div>
+						<div class="binrow">
+							<span class="binfhead"> Semester  </span>
+							<span class="binvalue"> 5 </span>
+						</div>
+						<div class="binrow">
+							<span class="binfhead">	Register No </span>
+							<span class="binvalue"> 15C136 </span>
+						</div>
+					</div>
+					<div class="profrightcontent" id="rightchangepass">	
+						<div class="fieldrow">
+							<label for="profoldpass">Old Password </label> 								
+							<input id="profoldpass" value="" type="password" required name="passoldprof" placeholder="Enter the old password">
+						</div>
+						<div class="fieldrow">
+							<label for="profnewpass">New password</label>  
+							<input id="profnewpass" type="password" required name="passnewprof" placeholder="Enter the new password">
+						</div>
+						<div class="fieldrow">
+							<label for="profretpass">Retype the password </label> 
+							<input id="profretpass" type="password" required name="passreprof" placeholder="Retype the new password">
+						</div>
+						<div class="fieldrow" style="justify-content:center">
+							<button class="passupdate" onclick="profuppass()"> Update  </button>
+						</div>
+					</div>					
+				</div>
+			</div>			
+		</div>
+	</div>
+	
+	<div id="subSumModal" class="modal">
+
+		<!-- Modal content -->
+		<div id="subSumBox">
+			<div class="modal-header">
+				<span class="close" onclick="hidesubSum()">&times;</span>
+				<h3 color="black">Summary of Last Best Submission</h3>
+			</div>
+			<div class="modal-subSumbody">
+				<div class="subSumcont">  
+					<header class="expRoomHead">   <!-- Using expcontent for faster dev . But beware of coupling-->
+						<div class="expRoomHeadRow">
+							<h5 > 14CS490 - Data Structures Lab </h5>
+						</div>
+						<div class="expRoomHeadRow">
+							<h5 > Matching Brackets </h5>
+						</div>
+					</header>
+					<article class="summaryBody">
+						<div class="flex_box flex_left"> 
+							<h4> Summary Details </h4> 
+						</div>
+						<div class="expdesccont noborder">
+							<p>
+								Time and Date of Submission : 12.00 | 12/08/2017
+							</p>						
+						</div>
+						
+						<div class="expdescbox space" id="expected_output">
+							<header class="expdeschead">
+								<h5> Expected Output </h5>
+							</header>
+							<div class="expdesccont">
+								<code class="sampcodebox">
+									YES<br/>
+									NO<br/>
+									YES<br/>
+								</code>
+							</div>
+						</div>	
+						<div class="expdescbox space" id="obtained_output">
+							<header class="expdeschead">
+								<h5> Obtained Output </h5>
+							</header>
+							<div class="expdesccont">
+								<code class="sampcodebox">
+									YES<br/>
+									NO<br/>
+									YES<br/>
+								</code>
+							</div>
+						</div>	
+						<div class="expdescbox space" id="summaryscore">
+							<header class="expdeschead">
+								<h5> Score Earned </h5>
+							</header>
+							<div class="expdesccont">
+								<ul>
+									<li> Score achieved : 10.0 </li>
+									<li> Remarks : Excellent! </li>
+								</ul>
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="buttonRow ">
+					<button class="submitButton" onclick="showCode()"> View Code </button>
+				</div>
+			</div>			
+		</div>		
+	</div>
+	
+	
+	
+	
+
+	<script src="stud_index.js">  </script>
+</body>
+
+</html>

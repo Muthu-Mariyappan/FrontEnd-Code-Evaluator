@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta CHARSET="UTF-8">
+	<meta Name="Author" content="Muthu G">
+	<meta Name="KEYWORDS" content="Code,validator,online">
+	<link rel="stylesheet" href="admin_index.css">		
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Online Code Evaluator - Admin panel </title>
+</head>
+
+<style>
+	.noborder{
+		border:none;
+		margin:2.5px;
+	}
+	h6.ritem
+	{
+		flex:auto;
+	}
+
+	#sec_reg .ipfield
+	{
+		padding:5px;
+	}
+	.rightalign{
+		align-items: center;
+		justify-content: flex-end;
+	}
+	.centeralign{
+		align-items: center;
+		justify-content: center;
+	}
+	.leftalign{
+		align-items: center;
+		justify-content: flex-start;
+	}
+	.profile{
+		margin-right:15px;
+		background-color:rgba(135,206,250,0.2);;
+		border-color:deepskyblue;
+		color:rgba(0,0,205,0.6);
+	}
+	.space
+	{
+		margin:5px;
+		width:98%;
+	}
+	.fullw
+	{
+		width:98%;
+	}
+	.nomargin
+	{
+		margin:0px;
+	}
+</style>
+<body onload="modal()">
+	<div id="big_wrapper">
+		<header>
+			<h2 align="center"> Online Code Validator - Admin Panel </h2>
+		</header>
+		<div id="inner_wrapper">
+			<nav >
+				<div id="home_menu" class="blueback">
+					<button class="bluetitle" id="adminbar"> Departments  </button>
+					<button class="titlebutton" onclick="showProfile()"> Profile </button>
+					<button class="titlebutton" onclick="logoff()"> Logoff </button>
+				</div>
+			</nav>
+			
+			<section class="ind_sec flex_left" id="adminhome">
+				
+				<div class="admdeptbox" >
+					<header class="admdeptboxHead" onclick="showAdminContent()">
+							<h5 class="admdeptboxTitle"> Computer Science and Engineering </h5>
+						</header>
+						<section class="admdeptboxBody">
+							<div class="adminnerbox">
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Department ID : </span>
+									<span class="admdeptboxItem"> CS2017  </span>
+								</div>
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Head of the Department: </span>
+									<span class="admdeptboxItem"> Dr. Mercy shalinie  </span>
+								</div>
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Number of staff : </span>
+									<span class="admdeptboxItem"> 12 </span>
+								</div>
+							</div>
+							<div class="adminnerbox">
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Number of Active Labs : </span>
+									<span class="admdeptboxItem"> 34  </span>
+								</div>
+								
+							</div>
+							<div class="flex_box" >
+								<button class="admdeptboxButton" onclick="showDeptEdit(this)"> Edit Department Info </Button>
+							</div>
+						</section>
+				</div>
+				<div class="admdeptbox">
+					<header class="admdeptboxHead" onclick="showAdminContent()">
+							<h5 class="admdeptboxTitle"> Information Technology </h5>
+						</header>
+						<section class="admdeptboxBody">
+							<div class="adminnerbox">
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Department ID : </span>
+									<span class="admdeptboxItem"> CS2017  </span>
+								</div>
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Head of the Department: </span>
+									<span class="admdeptboxItem"> Dr. Mercy shalinie  </span>
+								</div>
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Number of staff : </span>
+									<span class="admdeptboxItem"> 12 </span>
+								</div>
+							</div>
+							<div class="adminnerbox">
+								<div class="admdeptboxRow ">  
+									<span class="admdeptboxItem"> Number of Active Labs : </span>
+									<span class="admdeptboxItem"> 34  </span>
+								</div>
+								
+							</div>
+							<div class="flex_box" >
+								<button class="admdeptboxButton" onclick="showDeptEdit(this)"> Edit Department Info </Button>
+							</div>
+						</section>
+				</div>
+				<button class="submitButton" id="addeptcretbutton" onclick="showDeptCreate()" > Add New Department </button>
+					
+				
+			</section>
+			
+			
+			<section class="ind_seci flex_left" id="admincontent">
+				<article class="adminLeftMenu">
+					<button onclick="showAdminHome()" class="adBackbutton" id="adLeftBack"> <span class="spanarrow">&#x2039;</span> Back  </button>
+					<button onclick="changeAdminSpace(1)" class="adLeftButton" id="adLeftLabs"> Labs </button>
+					<button onclick="changeAdminSpace(2)" class="adLeftButton" id="adLeftStuds"> Students </button>
+					<button onclick="changeAdminSpace(3)" class="adLeftButton" id="adLeftStaff"> Staff </button>
+				</article>
+				<article class="adminRightContent">
+					<nav class="adminRCnav" id="adminYearBar">
+						<button class="adRightNavButton" id="adRightFirst" onclick="showOVAdminRoom(1)"> First  </button>
+						<button class="adRightNavButton" id="adRightSecond" onclick="showOVAdminRoom(2)"> Second </button>
+						<button class="adRightNavButton" id="adRightThird" onclick="showOVAdminRoom(3)"> Third </button>
+						<button class="adRightNavButton" id="adRightFinal" onclick="showOVAdminRoom(4)"> Final </button>
+					</nav>
+					<div class="rightLabSpace" id="space1">
+						<div class="adminrow">
+							<h5 > Ongoing Labs </h5>
+							<button class="createButton" id="adRightFirst" onclick="showLabCreate()"> Create New Lab  </button>
+						</div>
+						<div class="adminLabRoom" id="adminLabRoom_1">
+							<div class="adminLabBox" id="adminLabBoxDS">
+								<div class="adminLabBoxHead">
+									<h5>  Data Structures	</h5>
+								</div>
+								<div class="adminLabBoxBody">
+									<div class="adminrow">
+										<button onclick="showLabEdit()" class="createButton" id="adRightFirst"> Edit Lab  </button>
+										<button onclick="showAddStudToLabModal()" class="createButton" id="adRightFirst"> Add Student  </button>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Lab Code </span>
+										<span class="adminrowItemV"> 14CS380 </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Slot </span>
+										<span class="adminrowItemV"> A </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Handled By </span>
+										<span class="adminrowItemV"> Dr S.Karthick and Dr S. Sudha </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> No of students </span>
+										<span class="adminrowItemV"> 36 </span>
+									</div>
+									<div class="adminrow nomargin">									
+										<button onclick="showListViewStudentModal()" class="adminLabBoxStudView"> View Enrolled Students </button>
+									</div>
+								</div>
+							</div>
+							<div class="adminLabBox">
+								<div class="adminLabBoxHead">
+									<h5>  Data Structures	</h5>
+								</div>
+								<div class="adminLabBoxBody">
+									<div class="adminrow">
+										<button class="createButton" id="adRightFirst"> Edit Lab  </button>
+										<button class="createButton" id="adRightFirst"> Add Student  </button>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Lab Code </span>
+										<span class="adminrowItemV"> 14CS380 </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Slot </span>
+										<span class="adminrowItemV"> C </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Handled By </span>
+										<span class="adminrowItemV"> Dr S.Karthick and Dr S. Sudha </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> No of students </span>
+										<span class="adminrowItemV"> 36 </span>
+									</div>
+									<div class="adminrow nomargin">									
+										<button class="adminLabBoxStudView"> View Enrolled Students </button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="adminLabRoom" id="adminLabRoom_2">
+							<div class="adminLabBox">
+								<div class="adminLabBoxHead">
+									<h5>  Data Structures	</h5>
+								</div>
+								<div class="adminLabBoxBody">
+									<div class="adminrow">
+										<button class="createButton" id="adRightFirst"> Edit Lab  </button>
+										<button class="createButton" id="adRightFirst"> Add Student  </button>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Lab Code </span>
+										<span class="adminrowItemV"> 14CS380 </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Slot </span>
+										<span class="adminrowItemV"> A </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Handled By </span>
+										<span class="adminrowItemV"> Dr S.Karthick and Dr S. Sudha </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> No of students </span>
+										<span class="adminrowItemV"> 36 </span>
+									</div>
+									<div class="adminrow nomargin">									
+										<button class="adminLabBoxStudView"> View Enrolled Students </button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="adminLabRoom" id="adminLabRoom_3">
+							<div class="adminLabBox">
+								<div class="adminLabBoxHead">
+									<h5>  Data Structures	</h5>
+								</div>
+								<div class="adminLabBoxBody">
+									<div class="adminrow">
+										<button class="createButton" id="adRightFirst"> Edit Lab  </button>
+										<button class="createButton" id="adRightFirst"> Add Student  </button>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Lab Code </span>
+										<span class="adminrowItemV"> 14CS380 </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Slot </span>
+										<span class="adminrowItemV"> A </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Handled By </span>
+										<span class="adminrowItemV"> Dr S.Karthick and Dr S. Sudha </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> No of students </span>
+										<span class="adminrowItemV"> 36 </span>
+									</div>
+									<div class="adminrow nomargin">									
+										<button class="adminLabBoxStudView"> View Enrolled Students </button>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="adminLabRoom" id="adminLabRoom_4">
+							<div class="adminLabBox">
+								<div class="adminLabBoxHead">
+									<h5>  Data Structures	</h5>
+								</div>
+								<div class="adminLabBoxBody">
+									<div class="adminrow">
+										<button class="createButton" id="adRightFirst"> Edit Lab  </button>
+										<button class="createButton" id="adRightFirst"> Add Student  </button>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Lab Code </span>
+										<span class="adminrowItemV"> 14CS380 </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Slot </span>
+										<span class="adminrowItemV"> A </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> Handled By </span>
+										<span class="adminrowItemV"> Dr S.Karthick and Dr S. Sudha </span>
+									</div>
+									<div class="adminrow">
+										<span class="adminrowItemH"> No of students </span>
+										<span class="adminrowItemV"> 36 </span>
+									</div>
+									<div class="adminrow nomargin">									
+										<button class="adminLabBoxStudView"> View Enrolled Students </button>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					
+					<div class="rightLabSpace" id="space2">
+						<div class="adminrow">
+							<h5 > List of Students in the Department </h5>
+							<button class="createButton" id="adRightFirst" onclick="showCreateStudentModal()"> New student Entry  </button>
+						</div>
+						<div class="adminStudentRoom" id="adminStudRoom_1">				
+								<div class="recordHead">
+									<span class="recorditem"> Register No </span>
+									<span class="recorditem"> Name </span>
+									<span class="recorditem"> Semester </span>
+									<span class="recorditem"> Email </span>
+									<span class="recorditem" >  Action  </span>
+								</div>
+								<div class="record studentRecord" >
+									<span class="recorditem" > 15C136 </span>
+									<span class="recorditem" > King Lucifer </span>
+									<span class="recorditem" > 5 </span>
+									<span class="recorditem" > luciferhellluciferhellluciferhell@gmail.com </span>
+									<span class="recorditem" title="Click to Edit"> <button class="adminEditButton" onclick="showEditStudentModal(this)"> Edit </button> </span>
+									<span class="deleteRecord" onclick="raiseRemoveQuery(Remove.stud,this)">&times;</span>
+								</div>					
+						</div>
+						<div class="adminStudentRoom" id="adminStudRoom_2">
+							
+								
+								<div class="recordHead">
+									<span class="recorditem"> Register No </span>
+									<span class="recorditem"> Name </span>
+									<span class="recorditem"> Semester </span>
+									<span class="recorditem"> Email </span>
+									<span class="recorditem" >  Action  </span>
+								</div>
+								<div class="record studentRecord" >
+									<span class="recorditem" > 15C136 </span>
+									<span class="recorditem" > Kasdfing Lucifer </span>
+									<span class="recorditem" > 5 </span>
+									<span class="recorditem" > luciferhellluciferhellluciferhell@gmail.com </span>
+									<span class="recorditem" title="Click to Edit"> <button class="adminEditButton" onclick="showStudentEditModal(this)"> Edit </button> </span>
+									<span class="deleteRecord" onclick="removeStudentFromDept(this)">&times;</span>
+								</div>
+							
+						</div>
+						<div class="adminStudentRoom" id="adminStudRoom_3">
+							
+								
+								<div class="recordHead">
+									<span class="recorditem"> Register No </span>
+									<span class="recorditem"> Name </span>
+									<span class="recorditem"> Semester </span>
+									<span class="recorditem"> Email </span>
+									<span class="recorditem" >  Action  </span>
+								</div>
+								<div class="record studentRecord" >
+									<span class="recorditem" > 15Cdfd136 </span>
+									<span class="recorditem" > King Lucifer </span>
+									<span class="recorditem" > 5 </span>
+									<span class="recorditem" > luciferhellluciferhellluciferhell@gmail.com </span>
+									<span class="recorditem" title="Click to Edit"> <button class="adminEditButton" onclick="showStudentEditModal(this)"> Edit </button> </span>
+									<span class="deleteRecord" onclick="removeStudentFromDept(this)">&times;</span>
+								</div>
+							
+						</div>
+						<div class="adminStudentRoom" id="adminStudRoom_4">
+							
+								
+								<div class="recordHead">
+									<span class="recorditem"> Register No </span>
+									<span class="recorditem"> Name </span>
+									<span class="recorditem"> Semester </span>
+									<span class="recorditem"> Email </span>
+									<span class="recorditem" >  Action  </span>
+								</div>
+								<div class="record studentRecord" >
+									<span class="recorditem" > 15C136 </span>
+									<span class="recorditem" > King Lucifer </span>
+									<span class="recorditem" > 53 3</span>
+									<span class="recorditem" > luciferhellluciferhellluciferhell@gmail.com </span>
+									<span class="recorditem" title="Click to Edit"> <button class="adminEditButton" onclick="showStudentEditModal(this)"> Edit </button> </span>
+									<span class="deleteRecord" onclick="removeStudentFromDept(this)">&times;</span>
+								</div>
+						</div>
+					</div>
+					
+					<div class="rightLabSpace" id="space3">
+						<div class="adminrow">
+							<h5 > List of Staff in the Department </h5>
+							<button class="createButton" id="adRightFirst" onclick="showCreateStaffModal()"> New Staff Entry  </button>
+						</div>
+						<div class="adminStaffRoomY" id="adminStaffRoom">
+							
+								
+								<div class="recordHead">
+									<span class="recorditem"> Staff Id </span>
+									<span class="recorditem"> Name </span>
+									<span class="recorditem"> Email </span>
+									<span class="recorditem"> Lab 1 </span>
+									<span class="recorditem" >  Lab 2  </span>
+									<span class="recorditem" >   </span>
+								</div>
+								<div class="record staffRecord" >
+									<span class="recorditem" > ST270 </span>
+									<span class="recorditem" > Ram Naresh </span>
+									<span class="recorditem" > ram@tce.edu </span>
+									<span class="recorditem" > Data Structures and Algorithms </span>
+									<span class="recorditem" > Data Structures and Algorithms </span>
+									<span class="recorditem" title="Click to Edit"> <button class="adminEditButton" onclick="showEditStaffModal()"> Edit </button> </span>
+									<span class="deleteRecord" onclick="raiseRemoveQuery(Remove.staff,this)">&times;</span>
+								</div>
+							
+						</div>
+					</div>
+					
+					
+				</article>	
+			</section>
+			
+			
+		
+			
+			
+		
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- Html code for Modal window -->
+	
+	<div id="ProModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="confBox">
+			<div class="modal-header">
+				
+				<h3 color="black">Edit Admin Login</h3>
+				<span class="close">&times;</span>
+			</div>
+			<div class="modal-body">
+				<div class="profleft">
+					<div class="leftopt">
+						<h5 class="profleftbutton" id="leftbin" onclick="showBaseinfo()"> Change Email </h5>
+					</div>
+					<div class="leftopt" >
+						<h5 class="profleftbutton" id="leftpasscng" onclick="showChangePass()"> Change password </h5>
+					</div>
+				</div>
+				<div class="profright">
+					<div class="profrightcontent" id="basic-info">
+						<div class="fieldrow">
+							<label for="profoldpass">Old Email </label> 								
+							<input id="profoldpass" value="admin@tce.edu" type="email" name="adoldEM" >
+						</div>
+						<div class="fieldrow">
+							<label for="profnewpass">Enter new Email</label>  
+							<input id="profnewpass" type="password" required name="adnewEM" placeholder="Enter the new password">
+						</div>
+						<div class="fieldrow">
+							<label for="profretpass">Retype new Email </label> 
+							<input id="profretpass" type="password" required name="adnewEMre" placeholder="Retype the new password">
+						</div>
+						<div class="fieldrow" style="justify-content:center">
+							<button class="passupdate" onclick="adEmups()"> Update  </button>
+						</div>
+					</div>
+					<div class="profrightcontent" id="rightchangepass">	
+						<div class="fieldrow">
+							<label for="profoldpass">Old Password </label> 								
+							<input id="profoldpass" value="" type="password" required name="adpassold" placeholder="Enter the old password">
+						</div>
+						<div class="fieldrow">
+							<label for="profnewpass">New password</label>  
+							<input id="profnewpass" type="password" required name="adpassnew" placeholder="Enter the new password">
+						</div>
+						<div class="fieldrow">
+							<label for="profretpass">Retype the password </label> 
+							<input id="profretpass" type="password" required name="adpassre" placeholder="Retype the new password">
+						</div>
+						<div class="fieldrow" style="justify-content:center">
+							<button class="passupdate" onclick="adpassups()"> Update  </button>
+						</div>
+					</div>					
+				</div>
+			</div>			
+		</div>		
+	</div>
+
+	
+	
+	
+	<div id="deptCreateModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="confBox">
+			<div class="modal-header">
+
+				<h3 color="black">Creating new Department</h3>
+				<span class="close" onclick="hideDeptCreate()">&times;</span>
+			</div>
+			<div class="modal-confbody">
+				<div class="fieldrow">
+					<label for="addcid">Department ID </label> 								
+					<input id="addcid" value="" type="text" name="deptcrid" required placeholder="Enter unique id">
+				</div>
+				<div class="fieldrow">
+					<label for="addcname">Name of the Department</label>  
+					<input id="addcname" type="text" required name="deptcrname" required placeholder="Enter the new password">
+				</div>
+				<div class="fieldrow">
+					<label for="addchod">Staff Id of Head of Department </label> 
+					<input id="addchod" type="text" required name="deptcrhod" required placeholder="Retype the new password">
+				</div>
+				<div class="fieldrow" style="justify-content:center">
+					<button class="passupdate" onclick="createDept()"> Create  </button>
+				</div>
+			</div>			
+		</div>		
+	</div>
+	
+	<div id="deptEditModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="confBox">
+			<div class="modal-header">
+
+				<h3 color="black">Editing Department</h3>
+				<span class="close" onclick="hideDeptEdit()">&times;</span>
+			</div>
+			<div class="modal-confbody">
+				<div class="fieldrow">
+					<label for="addcid">Department ID </label> 								
+					<input id="addcid" value="" type="text" name="deptcrid" required placeholder="Enter unique id">
+				</div>
+				<div class="fieldrow">
+					<label for="addcname">Name of the Department</label>  
+					<input id="addcname" type="text" required name="deptcrname" required placeholder="Enter the new password">
+				</div>
+				<div class="fieldrow">
+					<label for="addchod">Staff Id of Head of Department </label> 
+					<input id="addchod" type="text" required name="deptcrhod" required placeholder="Retype the new password">
+				</div>
+				<div class="fieldrow" style="justify-content:center">
+					<button class="passupdate" onclick="editDept()"> Update  </button>
+					<button class="passupdate" onclick="raiseRemoveQuery(Remove.dept,this)"> Delete  </button>
+				</div>
+			</div>			
+		</div>		
+	</div>
+	
+	<div id="adminLabcreateModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="confBox">
+			<div class="modal-header">
+
+				<h3 color="black">Lab creation</h3>
+				<span class="close" onclick="hideLabCreate()">&times;</span>
+			</div>
+			<div class="modal-confbody">
+				<div class="fieldrow">
+					<label for="addlid">Lab ID </label> 								
+					<input id="addlid" value="" type="text" name="addlabid" required placeholder="Enter unique Lab id">
+				</div>
+				<div class="fieldrow">
+					<label for="addlname">Name of the Lab</label>  
+					<input id="addlname" type="text" required name="addlabname" required placeholder="Enter the Lab Name">
+				</div>
+				<div class="fieldrow">
+					<label for="addlstaff1">Staff-in-charge-1 </label> 
+					<input id="addlstaff1" type="text" required name="addlabstaf1" required placeholder="Enter the staff Id">
+				</div>
+				<div class="fieldrow">
+					<label for="addlstaff2">Staff-in-charge-2 </label> 
+					<input id="addlstaff2" type="text" required name="addlabstaf2" required placeholder="Enter the staff ID">
+				</div>
+				<div class="fieldrow" style="justify-content:center">
+					<button class="passupdate" onclick="createLab()"> Create  </button>
+				</div>
+			</div>			
+		</div>		
+	</div>
+	
+	
+	<div id="adminLabEditModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="confBox">
+			<div class="modal-header">
+
+				<h3 color="black">Editing the Lab</h3>
+				<span class="close" onclick="hideLabEdit()">&times;</span>
+			</div>
+			<div class="modal-confbody">
+				<div class="fieldrow">
+					<label for="addEid">Lab ID </label> 								
+					<input id="addEid" value="" type="text" name="addlabEid" required placeholder="Enter unique Lab id">
+				</div>
+				<div class="fieldrow">
+					<label for="addElname">Name of the Lab</label>  
+					<input id="addElname" type="text" required name="addlabEname" required placeholder="Enter the Lab Name">
+				</div>
+				<div class="fieldrow">
+					<label for="addElstaff1">Staff-in-charge-1 </label> 
+					<input id="addElstaff1" type="text" required name="addlabEstaf1" required placeholder="Enter the staff Id">
+				</div>
+				<div class="fieldrow">
+					<label for="addElstaff2">Staff-in-charge-2 </label> 
+					<input id="addElstaff2" type="text" required name="addlabEstaf2" required placeholder="Enter the staff ID">
+				</div>
+				<div class="fieldrow" style="justify-content:center">
+					<button class="passupdate" onclick="editLab()"> Update  </button>
+					<button class="passupdate" onclick="raiseRemoveQuery(Remove.lab,this)"> Remove  </button>
+				</div>
+			</div>			
+		</div>		
+	</div>
+	
+	<div id="listViewStudentModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="confBox">
+			<div class="modal-header">
+
+				<h3 color="black">Students Enrolled in this Lab</h3>
+				<span class="close" onclick="hideListViewStudentModal()">&times;</span>
+			</div>
+			<div class="adminStudentRoomModal" id="adminStudentRoomModal">
+				<div class="recordHead">
+					<span class="recorditem"> Register No </span>
+					<span class="recorditem"> Name </span>
+					<span class="recorditem"> Semester </span>
+					<span class="recorditem"> Email </span>
+		
+				</div>
+				<div class="record" >
+					<span class="recorditem" > 15C136 </span>
+					<span class="recorditem" > King Lucifer </span>
+					<span class="recorditem" > 5 </span>
+					<span class="recorditem" > luciferhellluciferhellluciferhell@gmail.com </span>
+					<span class="deleteRecord" onclick="raiseRemoveQuery(Remove.studLab,this)">&times;</span>
+				</div>
+				
+			</div>
+
+		</div>		
+	</div>
+	
+	<div id="createStudentModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="confBox">
+			<div class="modal-header">
+
+				<h3 color="black">Adding New student to Department</h3>
+				<span class="close" onclick="hideCreateStudentModal()">&times;</span>
+			</div>
+			<div class="modal-confbody">
+				<div class="fieldrow">
+					<label for="studid"> Register No </label> 								
+					<input id="studid" value="" type="text" name="studreg" required placeholder="Enter Register no">
+				</div>
+				<div class="fieldrow">
+					<label for="studname">  Name of the student</label>  
+					<input id="studname" type="text" required name="studname" required placeholder="Full name of student">
+				</div>
+				<div class="fieldrow">
+					<label for="studemail"> Email to be Registered </label> 
+					<input id="studemail" type="text" required name="studemail" required placeholder="Student Email">
+				</div>
+				<div class="fieldrow">
+					<label for="studyear"> Year Joined </label> 
+					<input id="studyear" type="text" required name="studyear" required placeholder="Enter the academic year">
+				</div>
+				<div class="fieldrow">
+					<label for="studsemester"> Semester </label> 
+					<input id="studsemester" type="text" required name="studsemester" required placeholder="Current semester of student">
+				</div>
+				
+				<div class="fieldrow" style="justify-content:center">
+					<button class="passupdate" onclick="addStudentToDept()"> Add Student  </button>
+				</div>
+			</div>			
+		</div>		
+	</div>
+
+	
+	
+	<div id="editStudentModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="confBox">
+			<div class="modal-header">
+
+				<h3 color="black">Editing Student Profile</h3>
+				<span class="close" onclick="hideEditStudentModal()">&times;</span>
+			</div>
+			<div class="modal-confbody">
+				<div class="fieldrow">
+					<label for="studid"> Register No </label> 								
+					<input id="studid" value="" type="text" name="studreg" required placeholder="Enter Register no">
+				</div>
+				<div class="fieldrow">
+					<label for="studname">  Name of the student</label>  
+					<input id="studname" type="text" required name="studname" required placeholder="Full name of student">
+				</div>
+				<div class="fieldrow">
+					<label for="studemail"> Email to be Registered </label> 
+					<input id="studemail" type="text" required name="studemail" required placeholder="Student Email">
+				</div>
+				<div class="fieldrow">
+					<label for="studyear"> Year Joined </label> 
+					<input id="studyear" type="text" required name="studyear" required placeholder="Enter the academic year">
+				</div>
+				<div class="fieldrow">
+					<label for="studsemester"> Semester </label> 
+					<input id="studsemester" type="text" required name="studsemester" required placeholder="Current semester of student">
+				</div>
+				
+				<div class="fieldrow" style="justify-content:center">
+					<button class="passupdate" onclick="updateStudent(this)"> Update  </button>
+				</div>
+			</div>			
+		</div>		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div id="createStaffModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="confBox">
+			<div class="modal-header">
+
+				<h3 color="black">Adding New Staff to Department</h3>
+				<span class="close" onclick="hideCreateStaffModal()">&times;</span>
+			</div>
+			<div class="modal-confbody">
+				<div class="fieldrow">
+					<label for="staffid"> Staff id </label> 								
+					<input id="staffid" value="" type="text" name="staffid" required placeholder="Enter Register no">
+				</div>
+				<div class="fieldrow">
+					<label for="staffname">  Name of the Staff</label>  
+					<input id="staffname" type="text" required name="staffname" required placeholder="Full name of student">
+				</div>
+				<div class="fieldrow">
+					<label for="staffmail"> Email to be Registered </label> 
+					<input id="staffmail" type="text" required name="staffmail" required placeholder="Student Email">
+				</div>
+				<div class="fieldrow" style="justify-content:center">
+					<button class="passupdate" onclick="addStaffToDept()"> Add Staff  </button>
+				</div>
+			</div>			
+		</div>		
+	</div>
+	
+	
+	
+	<div id="editStaffModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="confBox">
+			<div class="modal-header">
+
+				<h3 color="black">Editing staff Information</h3>
+				<span class="close" onclick="hideEditStaffModal()">&times;</span>
+			</div>
+			<div class="modal-confbody">
+				<div class="fieldrow">
+					<label for="staffEid"> Staff id </label> 								
+					<input id="staffEid" value="" type="text" name="staffEid" required placeholder="Enter Register no">
+				</div>
+				<div class="fieldrow">
+					<label for="staffEname">  Name of the Staff</label>  
+					<input id="staffEname" type="text" required name="staffEname" required placeholder="Full name of student">
+				</div>
+				<div class="fieldrow">
+					<label for="staffEmail"> Email to be Registered </label> 
+					<input id="staffEmail" type="text" required name="staffEmail" required placeholder="Student Email">
+				</div>
+				<div class="fieldrow" style="justify-content:center">
+					<button class="passupdate" onclick="updateStaff()"> Update </button>
+				</div>
+			</div>		
+		</div>		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div id="addStudToLabModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="confBox">
+			<div class="modal-header">
+
+				<h3 color="black">Enrolling new student to Lab</h3>
+				<span class="close" onclick="hideAddStudToLabModal()">&times;</span>
+			</div>
+			<div class="modal-confbody">
+				<div class="adminStudentRoomModal" id="adminAddToLabStudRoom">
+					<div class="recordHead">
+						<span class="recorditem"> Register No </span>
+						<span class="recorditem"> Name </span>
+						<span class="recorditem"> Semester </span>
+						<span class="recorditem"> Email </span>
+						<span class="recorditem">  </span>
+			
+					</div>
+					<div class="record" >
+						<span class="recorditem" > 15C136 </span>
+						<span class="recorditem" > King Lucifer </span>
+						<span class="recorditem" > 5 </span>
+						<span class="recorditem" > luciferhellluciferhellluciferhell@gmail.com </span>
+						<span class="recorditem" > <button onclick = "addStudentToLab(this)" class="studAddButton"> Add </button> </span>
+						
+					</div>
+					
+				</div>
+			</div>			
+		</div>		
+	</div>
+	
+	
+	<div id="confirmBoxModal" class="modal">
+		<!-- Modal content -->
+		<div class="confBox">
+			<div class="modal-header">
+				<h3 color="black">Confirm</h3>
+				<span class="close" onclick="hideConfirmBox()">&times;</span>
+			</div>
+			<div class="modal-confbody">
+				<div class="confcont">  
+					<p> Are you sure? </p>
+				</div>
+				<div class="buttonRow">
+					<button class="yesbut" onclick="doAction()"> Yes </button>
+					<button class="nobut" onclick="hideConfirmBox()"> No </button>
+				</div>
+			</div>			
+		</div>		
+	</div>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<script src="admin_index.js">  </script>
+</body>
+
+</html>
+
